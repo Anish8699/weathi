@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@500&family=Silkscreen&family=Yanone+Kaffeesatz&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="card">
+        <div class="sear">
+            <input type="text" class="search" placeholder=" city...">
+            <button class="btn">Search</button>
+        </div>
+        <br>
+        <div class="weather">
+            <div class="manage">
+                <h1 class="city">Weather  in Delhi </h1>
+            <i class="fa-solid fa-toggle-on"></i>
+            </div>
+            <br>
+            <div class="temp">26 DEG Celcius</div>
+            <img src="" alt="" class="icon">
+            <div class="desc">cloudy</div>
+            <div class="humidity">humidity: 60%</div>
+            <div class="wind">wind speed: 4.3 kmph</div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let weather = {
+            "apikey": "1f9dac54cb1b0218892612134bfaa60d",
+            fetchweather: function (city) {
+                fetch("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + this.apikey).then((response) => response.json()).then((data) => this.display(data));
+            },
+            display: function (data) {
+                const { name } = data;
+                const { temp, humidity } = data.main;
+                const { speed } = data.wind;
+                const { icon, description } = data.weather[0];
+                document.querySelector(".city").innerHTML = "weather in" +" "+ name;
+                document.querySelector(".temp").innerHTML = `${Math.trunc(temp - 279)} DEG Celcius`;
+                document.querySelector(".desc").innerHTML = description;
+                document.querySelector(".humidity").innerHTML = humidity + "%";
+                document.querySelector(".wind").innerHTML = speed + "kmph";
+            },
+            search: function () {
+                this.fetchweather(document.querySelector(".search").value)
+            }
+        }
+        document.querySelector(".search").addEventListener("change",function(){
+            weather.search();
+        })
+        document.querySelector(".btn").addEventListener("click", function () {
+            weather.search();
+        })
+
+        // dark mode
+        let x=document.querySelector("i");
+        let y=document.querySelector(".card");
+        x.addEventListener("click",function(){
+            if(x.classList.toggle("fa-toggle-on")){
+                y.style.color="white";
+                y.style.backgroundColor="black";
+            }
+            if(x.classList.toggle("fa-toggle-off")){
+                y.style.backgroundColor="lightgrey";
+                y.style.color="black";
+            }
+            
+            
+
+            
+        })
+
+    </script>
+</body>
+
+</html>

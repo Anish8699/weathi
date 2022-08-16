@@ -1,0 +1,63 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: aqua; */
+    
+    font-family: 'Silkscreen', cursive;
+    width: 100%;
+    background-image: url('https://source.unsplash.com/random/?weather');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 24px;
+    
+}
+.card{
+    background-color: #000000d0;
+    color: white;
+    padding: 30px;
+    border-radius: 5%;
+    width: 100%;
+    max-width: 400px;
+}
+.city{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 400;
+}
+.sear{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search{
+    height: 28px;
+    width: 100%;
+    font-size: 26px;
+}
+.btn{
+    margin-left: 10px;
+    height: 30px;
+    width: 80px;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0px 0px;
+}
+.manage{
+    display: flex;
+    flex-direction: row;
+}
+i{
+    margin-left: 60px;
+    font-size: 40px;
+    height: 20px;
+}
+
+
+
+
+
